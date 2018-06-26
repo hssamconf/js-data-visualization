@@ -19,10 +19,28 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojbutton', 'ojs/ojinputtext', '
                 var element1 = document.getElementById("text-input");
                 element1.validate().then(function (result1) {
                     if (result1 === "valid") {
-                        console.log("Form valid val = " + element1.value)
+                        console.log(stringToJson(element1.value));
                     }
                 });
             };
+
+            function stringToJson(data) {
+
+                var result = {series: [], groups: []};
+
+                var lines = data.split("\\n");// split the data string into separated lines
+                console.log("lines");
+                console.log(lines);
+                var headers = lines[0].split("\\t"); // split the first line that contains series' names
+                console.log("headers");
+                console.log(headers);
+
+                /*for (var i = 1; i < lines.length; i++) {
+
+                }*/
+
+                return result;
+            }
 
             /**
              * Optional ViewModel method invoked after the View is inserted into the
