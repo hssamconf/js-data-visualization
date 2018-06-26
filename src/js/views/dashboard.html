@@ -3,8 +3,20 @@
  The Universal Permissive License (UPL), Version 1.0
  -->
 <div class="oj-hybrid-padding">
-  <h1>Dashboard Content Area</h1>
-  <div>
-      To change the content of this section, you will make edits to the dashboard.html file located in the /js/views folder.
-  </div>
+    <h1>Dashboard Content Area</h1>
+    <div>
+
+        <oj-label for="text-input" show-required>Data :</oj-label>
+
+        <oj-input-text id="text-input" value="{{data}}" style="max-width:40em" clear-icon="always"
+                       required></oj-input-text>
+
+        <div id="button-container">
+            <oj-button id='buttonId1' on-oj-action='[[submitInput]]'>Submit</oj-button>
+        </div>
+
+        <!-- <br/><br/>
+                <span class="oj-label">Current component value is: </span>
+                <span data-bind="text: data"></span>-->
+    </div>
 </div>
