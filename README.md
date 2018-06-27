@@ -1,7 +1,6 @@
 # JavaScript / Data Visualization
 
-The task of this assignment is to investigate how modern JS technologies can be used to visualize raw data returned
-from an external entity.
+This is a simple sample applicaton based on the Oracle JET. 
 
 ## Background:
 
