@@ -13,19 +13,43 @@
 
         <span class="oj-label">Example data for Area Chart :  </span>
         <span data-bind="text: dataAreaChart"></span>
-        <br/><br/>
+        <span class="oj-label">Example data for Scatter Chart :  </span>
+        <span data-bind="text: dataScatterChart"></span>
+        <br><br>
+        <oj-label for="basicSelect" show-required>Chart type :</oj-label>
+        <oj-select-one id="basicSelect" value="{{selectedOption}}" required
+                       placeholder="Select a chart">
+            <oj-option value="AREA">Area Chart</oj-option>
+            <oj-option value="SCATTER">Scatter Chart</oj-option>
+        </oj-select-one>
+        <br><br>
         <div id="button-container">
             <oj-button id='buttonId1' on-oj-action='[[submitInput]]'>Submit</oj-button>
         </div>
-        <br/><br/>
+        <br><hr><br>
         <div id='chart-container'>
-            <oj-chart id="areaChart"
-                      type="area"
-                      series="[[areaSeriesValue]]"
-                      groups="[[areaGroupsValue]]"
-                      animation-on-display="auto"
-                      animation-on-data-change="auto"
-                      hover-behavior="dim"></oj-chart>
+            <div class="oj-flex oj-flex-items-pad">
+                <div class="oj-sm-12 oj-md-6 oj-flex-item">
+                    <oj-chart id="areaChart"
+                              type="area"
+                              series="[[areaSeriesValue]]"
+                              groups="[[areaGroupsValue]]"
+                              animation-on-display="auto"
+                              animation-on-data-change="auto"
+                              hover-behavior="dim">
+                    </oj-chart>
+                </div>
+                <div class="oj-sm-12 oj-md-6 oj-flex-item">
+                    <oj-chart
+                            type="scatter"
+                            selection-mode="multiple"
+                            series="[[scatterSeriesValue]]"
+                            groups="[[scatterGroupsValue]]"
+                            animation-on-display="auto"
+                            hover-behavior="dim">
+                    </oj-chart>
+                </div>
+            </div>
         </div>
 
     </div>
