@@ -13,21 +13,19 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojbutton', 'ojs/ojinputtext', '
             var self = this;
             // Below are a set of the ViewModel methods invoked by the oj-module component.
             // Please reference the oj-module jsDoc for additional information.
-            this.data = ko.observable("");
+            this.data = ko.observable("ColumnA\\tColumnB\\tColumnC\\tColumnD\\n1\\t2\\t3\\t4\\na\\tb\\tc\\td");
 
             self.submitInput = function () {
                 var element1 = document.getElementById("text-input");
                 element1.validate().then(function (result1) {
                     if (result1 === "valid") {
-                        console.log(stringToJson(element1.value));
+                        console.log(stringToAreaChart(element1.value));
                     }
                 });
             };
 
-            function stringToJson(data) {
-
+            function stringToAreaChart(data) {
                 var result = {series: [], groups: []};
-
                 var lines = data.split("\\n");// split the data string into separated lines
                 console.log("lines");
                 console.log(lines);
@@ -35,9 +33,20 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojbutton', 'ojs/ojinputtext', '
                 console.log("headers");
                 console.log(headers);
 
-                /*for (var i = 1; i < lines.length; i++) {
+                for (var i = 0; i < headers.length; i++) {
+                    result.series[i] = {name: headers[i], items: []};
+                    result.groups.push("Q" + (i + 1));
+                }
 
-                }*/
+                for (var i = 0; i < result.series.length; i++) {
+                    console.log("S" + i);
+                    for (var j = 1; j < lines.length; j++) {
+                        console.log("L" + j);
+                        var colonnes = lines[j].split("\\t");
+                        console.log("insert in items of S" + i + " : col" + i);
+                        result.series[i].items.push(colonnes[i]);
+                    }
+                }
 
                 return result;
             }
@@ -77,4 +86,5 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojbutton', 'ojs/ojinputtext', '
          */
         return new DashboardViewModel();
     }
-);
+)
+;
