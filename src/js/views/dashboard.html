@@ -11,12 +11,22 @@
         <oj-input-text id="text-input" value="{{data}}" style="max-width:40em" clear-icon="always"
                        required></oj-input-text>
 
+        <span class="oj-label">Example data for Area Chart :  </span>
+        <span data-bind="text: dataAreaChart"></span>
+        <br/><br/>
         <div id="button-container">
             <oj-button id='buttonId1' on-oj-action='[[submitInput]]'>Submit</oj-button>
         </div>
+        <br/><br/>
+        <div id='chart-container'>
+            <oj-chart id="areaChart"
+                      type="area"
+                      series="[[areaSeriesValue]]"
+                      groups="[[areaGroupsValue]]"
+                      animation-on-display="auto"
+                      animation-on-data-change="auto"
+                      hover-behavior="dim"></oj-chart>
+        </div>
 
-        <!-- <br/><br/>
-                <span class="oj-label">Current component value is: </span>
-                <span data-bind="text: data"></span>-->
     </div>
 </div>
