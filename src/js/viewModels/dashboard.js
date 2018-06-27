@@ -27,24 +27,25 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojbutton', 'ojs/ojinputtext', '
             function stringToAreaChart(data) {
                 var result = {series: [], groups: []};
                 var lines = data.split("\\n");// split the data string into separated lines
-                console.log("lines");
-                console.log(lines);
+                //console.log("lines");
+                //console.log(lines);
                 var headers = lines[0].split("\\t"); // split the first line that contains series' names
-                console.log("headers");
-                console.log(headers);
+                //console.log("headers");
+                //console.log(headers);
 
                 for (var i = 0; i < headers.length; i++) {
-                    result.series[i] = {name: headers[i], items: []};
+                    result.series[i] = {name: headers[i].length === 0 ? "Serie " + (i + 1) : headers[i], items: []};
                     result.groups.push("Q" + (i + 1));
                 }
 
                 for (var i = 0; i < result.series.length; i++) {
-                    console.log("S" + i);
+                    //console.log("S" + i);
                     for (var j = 1; j < lines.length; j++) {
-                        console.log("L" + j);
+                        //console.log("L" + j);
                         var colonnes = lines[j].split("\\t");
-                        console.log("insert in items of S" + i + " : col" + i);
-                        result.series[i].items.push(colonnes[i]);
+                        //console.log("insert in items of S" + i + " : col" + i);
+                        if (colonnes[i] !== undefined)
+                            result.series[i].items.push(colonnes[i]);
                     }
                 }
 
